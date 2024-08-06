@@ -1,0 +1,93 @@
+---
+title: "EDS 212 Day 2 B Exercises"
+author: "Nicole Pepper"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+# Load packages
+library(tidyverse)
+library()
+```
+
+##Example function: f(x) = 3x^2 + 4
+```{r}
+# define a function ----
+eq1 <- function(x) {
+  3 * x^2 + 4
+}
+
+# create a data frame with range of values to evaluate our function across ----
+
+my_data_range <- data.frame(x = c(1,100))
+
+# plot our function as a continuous curve over our specified range of values in our data frame
+
+# use our function as the y
+ggplot(data = my_data_range, aes(x = x)) +
+  geom_function(fun = eq1)
+```
+
+Try it out with 2.4 - 5x^3 + 2.1x^2
+
+```{r}
+eq2 <- function(x) {
+  2.4 - 5*x^3 + 2.1*x^2
+}
+my_data_range2 <- data.frame(x = c(-50,50))
+
+ggplot(data = my_data_range2, aes(x = x)) +
+  geom_function(fun = eq2)
+
+```
+
+Let's do derivatives
+```{r}
+# create function C(t)function ----
+ct <- function(t) {
+  t^3
+}
+
+# take the derivative
+dc_Dt <- D(expr = expression(t^3), name = "t")
+dc_Dt
+
+# store the deriv as a function ----
+dc_dt_fun <- function(t) {
+  3 * t^2
+}
+
+# create my data frame of values
+my_data_range3 <- data.frame(t = c(-5, 5))
+
+# plot our function
+ggplot(data = my_data_range3, aes(t)) +
+    geom_function(fun = ct, color ="red") +  geom_function(fun = dc_dt_fun, color ="blue")
+```
+
+```{r}
+#create the multivariate expression
+f_xyz <- expression(2 * x * y - 3 * x^2 * z^3)
+
+#partial with respect to x
+df_dx <- D(expr = f_xyz, name = "x")
+
+df_dx
+
+df_dx_fun <- function(y, x, z) {
+  2 * y - 3 * (2 * x) * z^3
+}
+
+df_dy <- D(expr = f_xyz, name = "y")
+
+df_dy
+
+df_dy_fun <- function(x) {
+  2 * x
+}
+
+```
+
+

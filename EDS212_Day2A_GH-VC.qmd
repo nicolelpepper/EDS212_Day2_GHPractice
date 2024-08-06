@@ -2,25 +2,39 @@
 title: "GitHub Practice"
 author: "Nicole Pepper"
 format: html
+editor_options: 
+  chunk_output_type: console
 ---
 
 ## Quarto
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
 
-## Running Code
+## Set Up with GitHub
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+###Use this to store your files as back up
 
-```{r}
-1 + 1
-```
-
-You can add options to executable code like this
+#Install "usethis" package
 
 ```{r}
-#| echo: false
-2 * 2
+#install.packages("usethis")
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+#Call in "usegit" to save to GitHub
+
+```{r}
+#Usethis::use_git()
+
+
+```
+
+-   It will ask you if you want to commit? Yes & Definitely!
+
+```{r}
+usethis::use_github()
+
+```
+
+
+
+
